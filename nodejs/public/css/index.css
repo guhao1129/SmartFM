@@ -1,0 +1,115 @@
+ul {
+    padding: 0
+}
+
+.red {
+    background: pink;
+    padding: 1px 5px
+}
+
+.item-gas{
+    background: lightgoldenrodyellow;
+    border: bisque;
+    border-radius: 3px;
+    margin: 15px;
+    text-align: center;
+    padding: 30px;
+
+
+}
+.air-flow-block{
+    background-color: lightsteelblue;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: #001f3f;
+}
+
+.orange {
+    background: orange;
+    padding: 1px 5px
+}
+
+.alarm-icon {
+    font-size: 20px;
+    color: #3c8dbc;
+    margin: 10px;
+}
+
+.alarm-option {
+    cursor: pointer
+}
+
+.alarm-option:hover {
+    background: rgb(240, 240, 240)
+}
+
+.content-wrapper {
+    background: rgb(250, 250, 250)
+}
+
+.tabcontent {
+    display: none
+}
+
+.tabcontent.active {
+    display: block
+}
+
+#liftLeft .box {
+    cursor: pointer
+}
+
+.lift-history {
+    display: none;
+}
+
+.lift-history.active {
+    display: block;
+}
+
+.form-group {
+    padding-left: 40px;
+}
+
+.mouse-on:hover {
+    cursor: pointer;
+    background: rgb(240, 240, 240)
+}
+
+.air-flow-text {
+    font-size: 16px;
+    font-weight: 500;
+    padding-top: 100px;
+    overflow: hidden;
+    
+}
+
+.air-flow-text div {
+    margin: 20px 0;
+    white-space: nowrap
+}
+
+.air-flow-num {
+    font-size: 60px;
+    color: #3c8dbc;
+}
+
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle!important;
+}
+
+
+.alarm-t{
+    background-color: #002a80;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    height: 35px;
+}
+
+.gp-name-ch{
+    color:darkslateblue;
+}

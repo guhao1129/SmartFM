@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fonda FM</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/skin-blue.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="css/square/green.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+</head>
+
+<body class="hold-transition skin-blue">
+<div class="wrapper">
+    <!-- Main Header -->
+    <header class="main-header">
+
+        <a href="" class="logo">
+            <div class="country-name"></div>
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>Fonda</b>FM</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Fonda</b>FM</span>
+        </a>
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only"></span>
+            </a>
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <div><a class="ico-back" href="http://111.231.55.121:8089/index.html"
+                            style="line-height: 50px;margin-right: 30px;color:white">Back to CountryManager</a></div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <!-- 左侧侧边栏 -->
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu" id="sidebar" data-widget="tree">
+                <li class=""><a href="#"><i class="glyphicon glyphicon-home"></i> <span>Dashboards</span></a></li>
+                <li class="treeview active menu-open"><a href="#"><i class="glyphicon glyphicon-asterisk"></i> <span>Manager</span> <span
+                        class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span></a>
+                    <ul class="treeview-menu" id="man-head" style="">
+                        <li class="active">
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i><font
+                                    style="vertical-align: inherit;"><font style="vertical-align: inherit;">Group
+                                Manager</font></font></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-cog"></i><font
+                                    style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sensor
+                                Manager</font></font></a>
+                        </li>
+
+                    </ul>
+
+                </li>
+                <li class="treeview tree-view-g-list"><a href="#"><i class="glyphicon glyphicon-th-list"></i> <span>Sensor System</span>
+                  <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                    <ul class="treeview-menu" id="g-list" style="">
+
+                    </ul>
+
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <!-- 显示主体 -->
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-danger">
+                        <div class="box-body">
+                            <div class="row">
+
+                                <div class="col-md-2" style="text-align:right">
+                                    <i class="fa fa-bell-slash-o alarm-icon col-md-6"></i>
+
+                                    <div class="alarm-count"></div>
+                                </div>
+                                <div class="col-md-5 " data-toggle="modal"
+                                     data-target="#myModal-history" data-type="0" style="height: 100px;">
+                                    <div>Warn</div>
+                                    <div class="warn-content">
+
+                                    </div>
+
+                                    <!-- alarms -->
+                                </div>
+                                <div class="col-md-5" data-toggle="modal"
+                                     data-target="#myModal-history" data-type="1" style="height: 100px;">
+                                    <div class="">Alarm</div>
+                                    <div class="alarm-content">
+
+                                    </div>
+
+                                    <!-- alarms -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabcontent active">
+                <div style="height:300px;width: 400px;margin-bottom:20px">
+                    <div>Total:<a class="total-number"></a></div>
+                    <canvas class="col-md-4" id="pie-chart-main-all-numbers">
+                    </canvas>
+                </div>
+                <div class="other-pies">
+                    <div class="col-md-2">
+
+                        <div>Lift Sensors</div>
+
+
+                        <div>
+                            <canvas style="width: 200px;height: 200px;" id="pie-0"></canvas>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2">
+
+                        <div>Gas Sensors</div>
+
+                        <div>
+                            <canvas style="width: 200px;height: 200px;" id="pie-1"></canvas>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2">
+
+                        <div>Flow Sensors</div>
+
+                        <div>
+                            <canvas style="width: 200px;height: 200px;" id="pie-2"></canvas>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2">
+
+                        <div>Power Sensors</div>
+
+
+                        <div>
+
+                            <canvas style="width: 200px;height: 200px;" id="pie-3"></canvas>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2">
+
+                        <div>Water Sensors</div>
+
+                        <div>
+
+                            <canvas style="width: 200px;height: 200px;" id="pie-4"></canvas>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <div>ToiletCs</div>
+
+                        <div>
+                            <canvas style="width: 200px;height: 200px;" id="pie-5"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="tabcontent">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-default dropdown-toggle"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false"><a
+                                                id="type-choose-group">All</a>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu type-all type-group">
+                                            <li><a href="#">Lift Sensor</a></li>
+                                            <li><a href="#">Gas Sensor</a></li>
+                                            <li><a href="#">Flow Sensor</a></li>
+                                            <li><a href="#">Power Meter</a></li>
+                                            <li><a href="#">Water Meter</a></li>
+                                            <li><a href="#">ToiletCs</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">All</a></li>
+                                        </ul>
+                                    </div>
+
+
+                                    <div class="col-md-11">
+                                        <div class="alarm-option  box-tools pull-right row">
+
+                                            <div class="alarm-option col-md-6">
+                                                <button data-toggle="modal" data-target="#group-setting" type="button"
+                                                        class="btn btn-success" data-name="" data-part='-1' data-type=""
+                                                        data-id="-1">Add
+                                                </button>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="separator" class="divider" style="margin-top: 10px"></div>
+                            <div class="box-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>GroupName</th>
+                                        <th>SensorType</th>
+                                        <th>CreateDate</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="group-list">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box box-primary">
+                            <div role="separator" class="divider" style="margin-top: 10px"></div>
+                            <div class="box-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <!--<th>HardWareSensorID</th>-->
+                                        <th>SensorName</th>
+                                        <th>GroupID</th>
+                                        <!--<th>CreateDate</th>-->
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="group-sensor-list">
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="tabcontent">
+                <!-- Single button -->
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-md-12">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <button type="button" class="btn btn-default dropdown-toggle"
+                                                data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false"><a id="type-choose">All</a>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu type-all type-sensor">
+                                            <li><a href="#">Lift Sensor</a></li>
+                                            <li><a href="#">Gas Sensor</a></li>
+                                            <li><a href="#">Flow Sensor</a></li>
+                                            <li><a href="#">Power Meter</a></li>
+                                            <li><a href="#">Water Meter</a></li>
+                                            <li><a href="#">ToiletCs</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="#">All</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-primary group-un" style="width: 160px;" >Group Unconfigured
+                                        </button>
+                                    </div>
+
+
+
+                                    <div class="pull-right" style="margin-right: 30px">
+                                        search:<input id="btn-sensor-search" placeholder="GroupID Or Location"
+                                                      style="margin-left: 10px">
+                                        <button type="button" class="btn btn-default" id="s-g-id-con">comfirm</button>
+
+                                    </div>
+
+                                    <!--<div class="col-md-5">-->
+                                    <!--<div class="alarm-option  box-tools pull-right row">-->
+                                    <!--<div class="col-md-5">-->
+                                    <!--<button type="button" class="btn btn-default ">Batch Configuration-->
+                                    <!--</button>-->
+                                    <!--</div>-->
+                                    <!--<div class="alarm-option col-md-6" data-toggle="modal"-->
+                                    <!--data-target="#sensors-picker-setting">-->
+                                    <!--<button type="button" class="btn btn-success ">Confirm Configuration-->
+                                    <!--</button>-->
+                                    <!--</div>-->
+
+
+                                    <!--</div>-->
+                                    <!--</div>-->
+                                </div>
+                            </div>
+                            <div role="separator" class="divider" style="margin-top: 10px"></div>
+                            <div class="table-responsive">
+                                <table class="table table-nowrap">
+                                    <thead>
+                                    <tr>
+                                        <!--<th>-->
+                                        <!--<input class="all-checked" type="checkbox">-->
+                                        <!--</th>-->
+                                        <th>ID</th>
+                                        <th>SensorName</th>
+                                        <th>AlarmSetting</th>
+                                        <th>AlarmStartTime</th>
+                                        <th>AlarmEndTime</th>
+                                        <th>Email</th>
+                                        <th>Location</th>
+                                        <th>GroupID</th>
+                                        <th>CreateDate</th>
+                                        <th>Action</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody class="sensor-list">
+                                    <!--<tr class="mouse-on" title="click to change history">-->
+                                    <!--<td>10</td>-->
+                                    <!--<td class="power-meter-reading1"></td>-->
+                                    <!--<td>PowerMeter 1</td>-->
+                                    <!--</tr>-->
+                                    <!--<tr class="mouse-on" title="click to change history">-->
+                                    <!--<td>11</td>-->
+                                    <!--<td class="power-meter-reading2"></td>-->
+                                    <!--<td>PowerMeter 2</td>-->
+                                    <!--</tr>-->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="tabcontent">
+                <div class="row">
+                    <div class="col-md-12" id="liftLeft">
+                    </div>
+                </div>
+            </div>
+            <div class="tabcontent">
+                <div class="tolit-list row">
+
+                    <div class="gas-content">
+                    </div>
+                </div>
+            </div>
+
+            <!--组管理-->
+            <div class="tabcontent">
+                <div class="box box-primary">
+                    <div class="box-header with-border row">
+                        <div class="col-md-12">
+                            <h3 class="box-title">Air Flow Speed</h3>
+                        </div>
+                    </div>
+                    <div class="box-body air-flow-body">
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabcontent">
+                <div class="row" style="display: flex;flex-direction: row">
+                    <div class="col-md-6">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Water Meter</h3>
+                            </div>
+                            <div class="box-body">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Sensor ID</th>
+                                        <th>Current Volum(m3)</th>
+                                        <th>Instant Flow Rate(L/H)</th>
+                                        <th>comments</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="water-meter-list">
+
+
+                                    <tr class="mouse-on" title="click to change history">
+                                        <td>8</td>
+                                        <td class="water-meter-volumn1"></td>
+                                        <td class="water-meter-rate1"></td>
+                                        <td>WaterMeter 1</td>
+                                    </tr>
+                                    <tr class="mouse-on" title="click to change history">
+                                        <td>9</td>
+                                        <td class="water-meter-volumn2"></td>
+                                        <td class="water-meter-rate2"></td>
+                                        <td>WaterMeter 2</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="box-footer with-border">
+                                <h4 class="box-title">History</h4>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>CreateDate</th>
+                                        <th>Current Volum(m3)</th>
+                                        <th>Instant Flow Rate(L/H)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="water-meter-history">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="col-md-9" style="margin-bottom:20px;">
+                            <div class="form-group">
+                                <label for="dtp_input1" class="col-md-2 control-label">Year Picking</label>
+
+                                <div class="input-group date form_year_time col-md-5" data-date="1979-09-16T05:25:07Z"
+                                     data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                                    <input class="form-control" id="water-y-picker" size="16" type="text" value=""
+                                           readonly>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon" id="water-y-con">confirm</span></span>
+                                </div>
+                                <input type="hidden" id="dtp_input1" value=""/><br/>
+                            </div>
+                            <div class="form-group">
+                                <label for="dtp_input2" class="col-md-2 control-label">Month Picking</label>
+
+                                <div class="input-group date form_month_time col-md-5" data-date="1979-09-16T05:25:07Z"
+                                     data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input2">
+                                    <input class="form-control" id="water-m-picker" size="16" type="text" value=""
+                                           readonly>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon" id="water-m-con">confirm</span>
+                                </div>
+                                <input type="hidden" id="dtp_input2" value=""/><br/>
+                            </div>
+
+                        </div>
+                        <div class="col-md-9" style="height:400px;margin-bottom:20px">
+                            <canvas id="WaterMChart">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabcontent">
+                <div class="row" style="display: flex;flex-direction: row">
+                    <div class="col-md-6">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Power Meter</h3>
+                            </div>
+                            <div class="box-body">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Sensor ID</th>
+                                        <th>Reading(KWH)</th>
+                                        <th>Comments</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="power-meter-list">
+                                    <tr class="mouse-on" title="click to change history">
+                                        <td>10</td>
+                                        <td class="power-meter-reading1"></td>
+                                        <td>PowerMeter 1</td>
+                                    </tr>
+                                    <tr class="mouse-on" title="click to change history">
+                                        <td>11</td>
+                                        <td class="power-meter-reading2"></td>
+                                        <td>PowerMeter 2</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="box-footer with-border">
+                                <h4 class="box-title">History</h4>
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>CreateDate</th>
+                                        <th>Reading(KWH)</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="power-meter-history">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+
+                        <div class="col-md-9" style="margin-bottom:20px;">
+                            <div class="form-group">
+                                <label for="dtp_input1" class="col-md-2 control-label">Year Picking</label>
+
+                                <div class="input-group date form_p_year_time col-md-5" data-date="1979-09-16T05:25:07Z"
+                                     data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                                    <input class="form-control" id="power-y-picker" size="16" type="text" value=""
+                                           readonly>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon" id="power-y-con">confirm</span></span>
+                                </div>
+                                <input type="hidden" id="dtp_input3" value=""/><br/>
+                            </div>
+                            <div class="form-group">
+                                <label for="dtp_input2" class="col-md-2 control-label">Month Picking</label>
+
+                                <div class="input-group date form_p_month_time col-md-5"
+                                     data-date="1979-09-16T05:25:07Z"
+                                     data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input2">
+                                    <input class="form-control" id="power-m-picker" size="16" type="text" value=""
+                                           readonly>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon" id="power-m-con">confirm</span>
+                                </div>
+                                <input type="hidden" id="dtp_input4" value=""/><br/>
+                            </div>
+
+                        </div>
+                        <div class="col-md-9" style="height:400px;margin-bottom:20px">
+                            <canvas id="PowerMChart">
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tabcontent">
+
+                <div class="toilet-cs-content">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 弹框 -->
+    <div class="modal fade" id="myModal-history" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="label">History</h4>
+                </div>
+                <div class="modal-body alarm-history-list">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹框 -->
+    <div class="modal fade" id="gas-history" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="">Gas History</h4>
+                </div>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>time</th>
+                        <th>H2S(ppm)</th>
+                        <th>CH4(ppm)</th>
+                    </tr>
+                    </thead>
+                    <tbody class="gas-history-list">
+                    <!-- toliet -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal-setting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">alarm setting</h4>
+            </div>
+            <div class="modal-body">
+                <div>Kitchen exhaust system</div>
+                <div class="alarm-setting-right-now"></div>
+                <div>Air Flow Speed:
+                    Floor <input type="text" id="input1" placeholder="number only">
+                    Celing <input type="text" id="input2" placeholder="number only">
+                </div>
+                <div style="text-align:center;margin:20px 0">
+                    <button type="button" class="btn btn-primary alarm-button" data-dismiss="modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="sensors-picker-setting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="sensors-picker-setting-title-t">Alarm Setting</h4>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="">
+                    <h5 class="alarm-t">group choose</h5>
+
+                    <div style="height: 50px;">
+                        <div class="btn-group col-md-2">
+                            <button type="button" class="btn btn-default dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Select <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                            </ul>
+
+                        </div>
+                        <div class="col-md-4">
+                            <h5 class="sensor-gp-name-ch"></h5>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body-1-t">
+                    <h5 class="alarm-t">alarm setting</h5>
+                </div>
+
+                <div class="modal-body-1"></div>
+
+
+                <div class="modal-alarm-time">
+                    <div>
+                        <h5 class="alarm-t modal-alarm-time-t">alarm time setting</h5>
+                    </div>
+                    <div>
+                        <h6 style="width: 40px;">startTime: </h6>
+                        <input type="number" id="alarm-s-t-h" width="200px" max="24" min="0" placeholder="hour"> :
+                        <input type="number" id="alarm-s-t-m" max="60" min="" placeholder="minute">
+                    </div>
+
+                    <div>
+                        <h6 style="width: 40px"> endTime: </h6> <input id="alarm-e-t-h" type="number" max="24"
+                                                                       min="0" placeholder="hour">:
+                        <input id="alarm-e-t-m" type="number" max="60" min="" placeholder="minute">
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="alarm-t">email setting</h5>
+                </div>
+
+                <div class="emails">
+                    <div> ① <input type="email" id="email-1" placeholder="input email"></div>
+                    <div> ② <input type="email" id="email-2" placeholder="input email"></div>
+                    <div> ③ <input type="email" id="email-3" placeholder="input email"></div>
+                </div>
+                <div style="text-align:center;margin:20px 0">
+                    <button type="button" id="alarm-setting-confirm" class="btn btn-primary alarm-button"
+                            data-dismiss="modal">Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--groupAddOrEdit-->
+<div class="modal fade" id="group-setting" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="group-setting-title-t">Group Setting</h4>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="modal-body-1-t">
+                    <h5 class="alarm-t text-ch">sensor type choose</h5>
+
+                    <div class="btn-group" style="width: 100%">
+
+                        <h5 class="group-name-has"></h5>
+
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-default dropdown-toggle"
+                                    data-toggle="dropdown">
+                                Select <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="gp-name-ch" style='width: 100px'></h5>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-alarm-time">
+                    <div>
+                        <h5 class="alarm-t modal-alarm-time-t">name edit</h5>
+                    </div>
+                    <div style="height: 50px;">
+                        <div class="col-md-2">
+                            <h6 style="width: 40px;">GroupID: </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="group-id-input" style="width: 200px" max="24" min="0"
+                                   placeholder="GroupID,number only">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-alarm-time">
+                    <div>
+                        <h5 class="alarm-t modal-alarm-time-t">name edit</h5>
+                    </div>
+                    <div style="height: 50px;">
+                        <div class="col-md-2">
+                            <h6 style="width: 40px;">GroupName: </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="group-name-input" style="width: 200px" max="24" min="0"
+                                   placeholder="Group Name">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="text-align:center;margin:20px 0">
+                    <button type="button" id="group-setting-confirm" class="btn btn-primary alarm-button"
+                            data-dismiss="modal">Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="group-del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="group-del-t">Are you sure to del this group?</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row"><h5 class="col-xs-3">Group Name : </h5><h5 class="del-g-name col-xs-6"></h5></div>
+                <div class="row"><h5 class="col-xs-3">Sensor Type:</h5> <h5 class="del-g-type col-xs-6"></h5></div>
+
+                <div style="text-align:center;margin:20px 0">
+                    <button type="button" id="group-del-confirm" class="btn btn-primary alarm-button"
+                            data-dismiss="modal">Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="lift-data" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="lift-data-t">Are you sure to del this group?</h4>
+            </div>
+            <div class="modal-body"  style="min-height: 440px;background: white">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>time</th>
+                        <th>Accelerometer(m/s2)</th>
+                        <th>Agular Volocity(°/s)</th>
+                        <th>Inclination(°)</th>
+                    </tr>
+                    </thead>
+                         <tbody class="lift-data-list">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="flow-data" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="flows-data-t">Are you sure to del this group?</h4>
+            </div>
+            <div class="modal-body"  style="min-height: 440px;background: white">
+                <div class="col-md-12" style="height:400px;margin-bottom:20px">
+                    <canvas id="windChartAny">
+                    </canvas>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Loading...</h4>
+            </div>
+            <div class="modal-body">
+                Wait a minute<span id="result"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="sensor-del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="sensor-del-t">Are you sure to set this sensor group to
+                    Unconfigured?</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row"><h5 class="col-xs-3">Sensor Name : </h5><h5 class="del-s-name col-xs-6"></h5></div>
+                <div class="row"><h5 class="col-xs-3">Sensor Type:</h5> <h5 class="del-s-type col-xs-6"></h5></div>
+                <div class="row"><h5 class="col-xs-3">Sensor HardWareSensorID:</h5> <h5
+                        class="del-s-location col-xs-6"></h5></div>
+
+                <div style="text-align:center;margin:20px 0">
+                    <button type="button" id="sensor-del-confirm" class="btn btn-primary alarm-button"
+                            data-dismiss="modal">Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<!-- REQUIRED JS SCRIPTS -->
+<script src="js/jquery-1.7.2.js"></script>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/adminlte.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/icheck.js"></script>
+<script src="js/divMapping.js"></script>
+<script type="text/javascript" src="./js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/starterJs.js" charset="UTF-8"></script>
+
+
+<!--<script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>-->
+<script>
+
+
+</script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
+</html>

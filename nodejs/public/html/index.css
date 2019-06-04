@@ -1,0 +1,14 @@
+.toiletcs-button{
+    background-color: white;
+    width: 300px;
+    border-radius: 2px;
+    margin: 4px;
+    padding: 4px;
+}
+table{
+    background-color: grey;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}

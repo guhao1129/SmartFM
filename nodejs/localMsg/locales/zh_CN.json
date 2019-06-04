@@ -1,0 +1,11 @@
+{
+  "token.invalid": "无效token",
+  "access.not.authorized": "未经授权的访问",
+  "logout.success": "成功登出",
+  "token.expired": "token.expired",
+  "sms.send.success": "发送短信成功",
+  "sms.code.invalid": "无效的短信验证码",
+  "tag.add.success": "标签添加成功",
+  "member.not.exists": "用户不存在",
+  "member.password.error": "用户密码错误"
+}
