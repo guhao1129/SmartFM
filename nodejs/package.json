@@ -7,7 +7,7 @@
   "dependencies": {
     "bluebird": "^2.10.2",
     "body-parser": "^1.14.1",
-    "express": "^4.14.0",
+    "express": "^4.17.3",
     "express-partials": "^0.3.0",
     "i18n": "^0.5.0",
     "jpush-sdk": "^3.2.1",
